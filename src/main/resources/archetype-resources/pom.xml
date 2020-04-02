@@ -1,0 +1,164 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+#macro( ccase $str )
+#foreach( $word in $str.split('-') )$word.substring(0,1).toUpperCase()$word.substring(1).concat(" ")#end
+#end
+#set( $tmpname = "#ccase( $rootArtifactId )" )
+#set( $name = $tmpname.replace("Server","").trim() )
+#set( $client-name = ${artifactId.replace("server","client")} )
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- +=============================================== -->
+    <!-- | Section 1: Project information -->
+    <!-- +=============================================== -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>$groupId</groupId>
+    <artifactId>$artifactId</artifactId>
+    <version>$version</version>
+    <packaging>pom</packaging>
+
+    <name>$name :: Server</name>
+    <description>Description of component</description>
+    <url/>
+    <properties>
+        <component.long-name>${component-long-name}</component.long-name>
+        <component.short-name>${component-short-name}</component.short-name>
+        <component.debug.port>8787</component.debug.port>
+        <component.debug.suspend>n</component.debug.suspend>
+        <parent.profile.activate>format-code</parent.profile.activate>
+    </properties>
+
+    <!-- +=============================================== -->
+    <!-- | Section 2: Module definitions -->
+    <!-- +=============================================== -->
+
+    <!-- DELETE_MODULES  // TODO // Remove modules list, we will use the one in the profile before instead! -->
+    <!--<modules>
+            <module>app</module>
+            <module>component-tests</module>
+    </modules>-->
+
+    <profiles>
+        <profile>
+            <id>${component-short-name}-default</id>
+           <!-- <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>-->
+            <modules>
+                <module>app</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>component-tests</id>
+            <modules>
+                <module>component-tests</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <!-- +=============================================== -->
+    <!-- | Section 3: Dependency (Management) -->
+    <!-- +=============================================== -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+            </dependency>
+            <!--<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>-->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-descriptor</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <configuration>
+                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+                    <!-- Enhance performance -->
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                    <!-- Enhance performance -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <!-- Put all test reports in root site, needed for Overseer -->
+                    <linkXRef>false</linkXRef>
+                    <!-- Get rid of warning -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.6.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd"
+         name="${project.name}">
+    <bannerLeft>
+        <name>${project.name}</name>
+        <src>http://skapaweb3.tripnet.se/wirelesscar/wp-content/uploads/2014/07/logo.png</src>
+        <href>http://test.com/</href>
+    </bannerLeft>
+    <bannerRight>
+        <name>${project.name}</name>
+    </bannerRight>
+    <body>
+        <links>
+            <item name="Maven" href="http://maven.apache.org/"/>
+        </links>
+
+        <breadcrumbs>
+            <item name="${project.name}" href="index.html"/>
+        </breadcrumbs>
+        <menu name="API Documentation">
+            <item name="REST API Documentation" href="api-docs/rest-api-index.html">
+                <item name="Standalone Version" href="api-docs/html/generated/rest-api-index.html"/>
+            </item>
+            <item name="Swagger UI JSON" href="api-docs/json/rest-api.json"/>
+        </menu>
+        <menu name="Load Tests">
+            <item name="Report" href="load-tests/index.html">
+            </item>
+        </menu>
+
+        <menu ref="modules" inherit="top"/>
+        <menu ref="reports" inherit="bottom"/>
+    </body>
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.5</version>
+    </skin>
+</project>

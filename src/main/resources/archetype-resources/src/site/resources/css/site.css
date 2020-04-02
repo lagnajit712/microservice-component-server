@@ -1,0 +1,9 @@
+/* You can override this file with your own styles */
+.tableblock td { 
+    text-align:left
+}
+
+.tableblock th { 
+    text-align:left;
+    padding: 8px;
+}
