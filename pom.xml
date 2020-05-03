@@ -26,7 +26,7 @@
       <extension>
         <groupId>org.apache.maven.archetype</groupId>
         <artifactId>archetype-packaging</artifactId>
-        <version>3.1.0</version>
+        <version>3.1.2</version>
       </extension>
     </extensions>
 
@@ -35,7 +35,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-archetype-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.1.2</version>
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.shared</groupId>
@@ -47,19 +47,15 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <!-- Revert since .gitignore problem still is not solved -->
-          <!-- https://issues.apache.org/jira/browse/MRESOURCES-238 -->
-          <version>2.6</version>
+          <version>3.1.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <!-- Specified plugin due to failing with the transitive or inherited version of plugin -->
-          <!-- Version used default is 3.0.0-M1-->
-          <version>2.8.2</version>
+          <version>3.0.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
   </build>
-  <url>http://maven.apache.org</url>
+ <!-- <url>http://maven.apache.org</url>-->
 </project>

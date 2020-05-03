@@ -50,9 +50,9 @@
     <profiles>
         <profile>
             <id>${component-short-name}-default</id>
-           <!-- <activation>
+            <activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>-->
+            </activation>
             <modules>
                 <module>app</module>
             </modules>
