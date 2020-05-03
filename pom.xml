@@ -13,8 +13,11 @@
   <name>${project.artifactId}</name>
 
   <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <archetype-packaging.version>3.1.2</archetype-packaging.version>
   </properties>
 
   <!-- +=============================================== -->
@@ -26,7 +29,7 @@
       <extension>
         <groupId>org.apache.maven.archetype</groupId>
         <artifactId>archetype-packaging</artifactId>
-        <version>3.1.2</version>
+        <version>${archetype-packaging.version}</version>
       </extension>
     </extensions>
 
@@ -35,7 +38,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-archetype-plugin</artifactId>
-          <version>3.1.2</version>
+          <version>${archetype-packaging.version}</version>
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.shared</groupId>

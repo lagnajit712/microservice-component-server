@@ -42,7 +42,7 @@
     <!-- +=============================================== -->
 
     <!-- DELETE_MODULES  // TODO // Remove modules list, we will use the one in the profile before instead! -->
-    <!--<modules>
+   <!-- <modules>
             <module>app</module>
             <module>component-tests</module>
     </modules>-->
